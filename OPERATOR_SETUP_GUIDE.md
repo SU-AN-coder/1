@@ -37,7 +37,7 @@
 
 MVP 阶段建议先用 `单机 + Docker Compose` 或 `单机直接运行 Node.js`，最省事。
 
-你需要确认：
+需要确认：
 
 - 服务运行机器 IP 或域名
 - 是否走 HTTPS
@@ -45,15 +45,15 @@ MVP 阶段建议先用 `单机 + Docker Compose` 或 `单机直接运行 Node.js
 
 ### 2. 准备 PostgreSQL
 
-项目下一步会把仓储接口接到 PostgreSQL，所以你现在先把数据库准备好。
+项目下一步会把仓储接口接到 PostgreSQL，先把数据库准备好。
 
-建议你创建：
+建议创建：
 
 - 一个数据库，例如 `multi_agent_platform`
 - 一个专用账号，例如 `platform_app`
 - 一个专用密码
 
-你需要记住这些信息：
+需要记住的信息：
 
 - `POSTGRES_HOST`
 - `POSTGRES_PORT`
@@ -89,10 +89,9 @@ MVP 阶段单实例 Redis 就够了。
 
 ### 4. 创建 GitHub App
 
-这是你最关键的一步。  
-因为后面平台要通过 GitHub App 去接 webhook、读 PR、写 Review、查 Check-run。
+后面平台要通过 GitHub App 去接 webhook、读 PR、写 Review、查 Check-run。
 
-你需要在 GitHub Enterprise 上创建一个 App，并记录以下信息：
+需要在 GitHub Enterprise 上创建一个 App，并记录以下信息：
 
 - `GITHUB_ENTERPRISE_BASE_URL`
 - `GITHUB_APP_ID`
@@ -178,52 +177,8 @@ GITHUB_PRIVATE_KEY_PATH=
 GITHUB_ALLOWED_ORGS=
 ```
 
-## 你做完后需要交给我的信息
 
-等配置完成后，下一轮直接把下面信息告诉我，我就可以继续把真实基础设施接进去：
 
-### PostgreSQL
-
-- 连接方式
-- 数据库名
-- 用户名
-- 是否启用 SSL
-
-### Redis
-
-- 连接方式
-- 是否有密码
-- 是否启用 TLS
-
-### GitHub Enterprise
-
-- Base URL
-- GitHub App ID
-- Webhook Secret
-- Private Key 文件路径放在哪里
-- App 安装到了哪些 repo/org
-
-### 运行方式
-
-- 你准备本地跑、服务器跑，还是 Docker 跑
-- webhook 最终回调地址是什么
-
-## 推荐执行顺序
-
-建议你按这个顺序做：
-
-1. 先把 PostgreSQL 和 Redis 准备好
-2. 再创建 GitHub App
-3. 再决定部署机器和域名
-4. 最后把环境变量整理出来
-
-这样下一步我就能直接开始做：
-
-- PostgreSQL 仓储实现
-- Redis 幂等和锁实现
-- GitHub App 签名校验与鉴权
-- `.env` 加载
-- Docker Compose 或部署脚本
 
 ## 代码里后面会用到的接入点
 
@@ -237,11 +192,11 @@ GITHUB_ALLOWED_ORGS=
 
 ## 完成标准
 
-当你满足下面 4 条时，就可以回来找我继续：
+当满足下面 4 条时，就可以继续：
 
 - PostgreSQL 可连接
 - Redis 可连接
 - GitHub App 已创建并安装到目标仓库
 - 上面的环境变量你已经整理齐
 
-做到这里，你的状态就是：`可以开始真实接入`
+做到这里状态就是：`可以开始真实接入`
